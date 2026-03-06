@@ -1,8 +1,10 @@
 :root {
     --bg-page: #e8ecef;
     --paper-bg: #ffffff;
-    --primary-color: #1b365d; /* Dark Blue */
-    --accent-color: #cbad82; /* Gold / Tan */
+    --primary-color: #1b365d;
+    /* Dark Blue */
+    --accent-color: #cbad82;
+    /* Gold / Tan */
     --text-main: #333333;
     --text-muted: #555555;
     --title-color: #ffffff;
@@ -31,7 +33,7 @@ body {
     background: var(--paper-bg);
     width: 100%;
     max-width: 900px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -130,7 +132,7 @@ body {
     border-radius: 50%;
     border: 6px solid var(--accent-color);
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     background-color: #fff;
 }
 
@@ -228,7 +230,8 @@ body {
     margin-bottom: 0.3rem;
 }
 
-.edu-degree, .edu-major {
+.edu-degree,
+.edu-major {
     font-size: 0.95rem;
     color: var(--text-muted);
 }
@@ -370,7 +373,7 @@ body {
     .nickname::after {
         display: none;
     }
-    
+
     .nickname {
         justify-content: center;
     }
@@ -378,5 +381,182 @@ body {
     .interests-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+}
+
+/* --- Wind Energy Background --- */
+.wind-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Wind Turbines */
+.turbine {
+    position: absolute;
+    bottom: -10px;
+}
+
+.turbine-tower {
+    width: 12px;
+    height: 200px;
+    background: linear-gradient(90deg, #d4d4d4 0%, #ffffff 50%, #d4d4d4 100%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 6px 6px 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.turbine-blades {
+    position: absolute;
+    bottom: 190px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateX(-50%);
+    animation: spin linear infinite;
+}
+
+.turbine-center {
+    width: 16px;
+    height: 16px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    z-index: 2;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blade {
+    position: absolute;
+    width: 6px;
+    height: 100px;
+    background: #ffffff;
+    top: 8px;
+    left: 4px;
+    transform-origin: 50% 0;
+    border-radius: 50% 50% 3px 3px;
+    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.blade:nth-child(2) {
+    transform: rotate(0deg) translateY(-2px);
+}
+
+.blade:nth-child(3) {
+    transform: rotate(120deg) translateY(-2px);
+}
+
+.blade:nth-child(4) {
+    transform: rotate(240deg) translateY(-2px);
+}
+
+@keyframes spin {
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/* Clouds */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    animation: drift linear infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.cloud1 {
+    width: 140px;
+    height: 40px;
+    top: 15%;
+    left: -150px;
+    animation-duration: 45s;
+}
+
+.cloud1::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 20px;
+}
+
+.cloud1::after {
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    left: 70px;
+}
+
+.cloud2 {
+    width: 180px;
+    height: 50px;
+    top: 35%;
+    left: -200px;
+    animation-duration: 60s;
+    animation-delay: 5s;
+}
+
+.cloud2::before {
+    width: 80px;
+    height: 80px;
+    top: -45px;
+    left: 30px;
+}
+
+.cloud2::after {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 90px;
+}
+
+.cloud3 {
+    width: 120px;
+    height: 35px;
+    top: 50%;
+    left: -150px;
+    animation-duration: 50s;
+    animation-delay: 15s;
+}
+
+.cloud3::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 20px;
+}
+
+.cloud3::after {
+    width: 40px;
+    height: 40px;
+    top: -15px;
+    left: 60px;
+}
+
+@keyframes drift {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(120vw);
     }
 }
