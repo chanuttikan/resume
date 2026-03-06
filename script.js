@@ -2,21 +2,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.hero-text, .hero-img-container, .glass-card, .section-title');
+    const revealElements = document.querySelectorAll('.reveal');
 
     const revealOnScroll = () => {
         const windowHeight = window.innerHeight;
-        const elementVisible = 150;
+        const elementVisible = 100;
 
-        revealElements.forEach((element) => {
+        revealElements.forEach((element, index) => {
             const elementTop = element.getBoundingClientRect().top;
 
             if (elementTop < windowHeight - elementVisible) {
-                element.classList.add('visible');
-                // Allow CSS transition to handle the effect if we add specific 'visible' styles
-                // Currently handled by CSS animations for hero, but can be expanded
-                element.style.opacity = 1;
-                element.style.transform = 'translateY(0)';
+                // Add a slight delay based on index for staggered effect
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, index * 100);
             }
         });
     };
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
